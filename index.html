@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paper Market</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Paper Market">
+<meta name="theme-color" content="#000000">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/png;base64,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">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Paper%20Market%22%2C%22short_name%22%3A%22Paper%20Market%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23000000%22%2C%22theme_color%22%3A%22%23000000%22%2C%22start_url%22%3A%22.%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAO00lEQVR42u2dzU8UzRPHm9nx9gAJiSYaE40eNCgRkfcXIYYYvXjx79R4MWriS%2BL7%2BxsKxkRjjPHAAcEjsPAcOr/%2B1VPVVVMzu8vuztT3MBlW3IadD/XW3dXOmUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8nUCeqxj6AkD7JHepS7u7sGhwGRoVyUGBxVwaIAJQZHSbAo4FYy%2BTA4uhiLKBDwRfT4KQ0yHwZHV5IBv4z%2Bk8BBJjEGR9djQW/oN1MgoohwfBgc3UcGwgK9GDUY9Krhw%2BDoDjIoEJQMygdiQgAlyofB0TVkUCyiiCA4IBkCJVE%2BUnsM3UIGYgLBAU0LdBwBBfpPmT%2BGwdE1ZGSKmo2NjY3e3t5dIPo9kBhzK91BBnUlQUmSoBsKx%2B7u7tramr/v6%2BvzZOzs7KAbOUo1OLqGDMQEvFI4VldX4Zf9/f07OzueiUAGCkQMjq4MPxEN9AYFpL9//6ZDBD4E%2B2FwdGWQkQBFvwxv8vPnT26gvr4%2Bzn5E%2BTA4uoyMJElqtRp6JfzH79%2B/y8P19vZG%2BTA4uo%2BMYBgCEP4G8eG/%2BevXr5pB//nnH%2BRfODgsle1oMpDB8EKs%2BG9eWVnRDNrf3w8HlasdBkcXkIGwCOrp6anVap8/f1YOOjAwAIfLrIMZHB1HBgw5KRBQSZIsLS0pB92/fz%2B1GTIiBkfHkeHhgO6jVqulaeqBSNM0SRJ//fDhg3LQgwcP0tFdVhHd4GgnGbTMFfUmFI5arfb%2B/XvloIcPH0Y0REvpBkdHkCGUuZA3gUzAL9%2B%2Bfasc9OjRo46ZerWYo3NdiUwGxSK88ubNG%2BW4x48f52btNf/d4GhbkOGcg9MlnCtB19evX2sGHRwc3N7e3mXk%2BJWk8HWDo80pK5eYIIPhr0oyhoaG5GkUakvMcrQNi1xlLoqFv3n16pVm3DNnzsDSJ6qE%2Bntni306NsiIxhmyzVCSMTw8vLOzU6/X6/U6NB7hBuUscohqcLSHDDRpAsmgcLx8%2BVIz7sjIiCfDoxAQqdfrUStidY6OcyW0NI5yEwSHkoxz587V/6uACMUChhpCZmtwtBYLpyuNc3C8ePGiGBkIEbp6w%2BocbfMjjhRA6SIdNFHimdi3b1/4UknG6Oio52D7f6LGg7McMigGx14YDLoyA9VA6VVPhqcBMoEsR7TOYZZjr7FwzIwJZzOi1XFlMUOwGdvb2ztE0X1NMiUGRzOxEAyGsgaqTFmRzQhk%2BCt0JZkZiu2y3zs/IgQZXJwR7EdTyIAZbLFQwyxHC/2IkgwEhzJlhWRsbW0FJqJkaGZVpF/Znnpz/YiwXpyGGnkTk5C10iCDpq/y/gNnbZ/2AAvkRzLJoHDkIgN6E4iFD0KbSIbBUTy8iPqRaPUzrPdETPgXlWSMj49DD0LhQEGo7E2UnsXgaBSL6EZFVMyISh9kjI2NwZSVxhmtIMPgyFHuFMKLTFcCy%2BRJkugrGYEMzpugGnkTyTA4CqapgrWAiQk1G/oVfrDMFVDw6QmMMFpHhsGRbTCU4UU0yEA3uQyGA9NpyGxw867NJcPgYMnQpKl0fpXjI6/BQIlJdOpEKHM1hQyDIwcZ0diC7mxGcYZ%2BDwHU2bNnAwS0mBENP9H6v1y9vwyOfK5EM0XCuRJ/fffuXbGfanh4GFqIYDm4IEPZw8ngaInB4HYccVf9XjQqvzxYcCUoyGgdGdWFQ78AOBOLYDNybV5VuhLoR%2Bia4QKz8AZHETLoLiOh3EnvG8FiZGQEEhCcCOdKWpGYGBwSGcppM1S6SJLk48ePhX8Yn6xCLKL5iDBj0joyXJWn7DNTErkE3mB4MTo6Cp%2B9QIZgMFpKRuUsR%2BaqLbr8IjTDKNwbQ6huQTLoPY0wYL7aajKqBYeeDHmSvUE/ggxGlAnqR6JL/VpKRoXgUJIRdSKBjE%2BfPjWIBdyLRhHZiYnzI60moyoxB51RyyQDre5cXl4uPDoMLwQ7ERb2CRHGnmFRFTiinZYcWL4lk5Gmqb5dH9LY2Bi1DdwV7Xjm1nHtGRnVylYgFnKbJbRbtcBYfuEWhQDRINTC205G%2BeHIXK0T3WgEdybmTVYnJia4YJOaCpkMLivZGzJKDoc%2BCIVYBPlX9MNNTk7S0gXnVqgf6RyDUTm3oolAKRz65TmcwZCTEdSTKTpR0i4yygwHd%2Byq0KANUaLcfzY9PS20P%2BBaZciTZ210JeWHQ3AoXBsur3379unJmJ2d9Y%2Bc2%2BHObVvVpKltNBhlhoMjA639pC1TYBlUHmJ%2Bfj48e7%2B0Ey7CoHGoTIbgR9pIRiWyFc0hFYiP58%2Bfa8gQVv9Ch6KvXnQOFuWEIzPUiDZogzZD3oIGyeD2kqBQg1u1JS/cajsZZYNDGWpwW929hPdfWFgIDx4yQeFA5XB9eNEhWJQNDmWowdXI/YtPnjwRhojuVqUbjYSZs44NL8oMh3JqTYgzarXa06dPhSHm5uZQjyWua4pmbU6HY1EeOOSptWioQfsgPHv2TBji/PnzMNRAcOTtgNAVZJQBDnnviaYZlyZ3RXGGEGoINqOLsOh6OOR2wfJpFYgSOdSYmZlB1mJrayuaoWi2k3QFFh0BB3rADb5P3lDDrwaVQ43Z2VnqULj9ie1az1ceOJoFBOdKMqdO0ApyOQhFKES7BGv69nUdGXsKh5IJzXmnTtx%2BEt3rzIUajx8/lkONMHuCmKAdP9u4nq9b4eCYEFjRm5boeWmwmwonZahBG3CFe31b8S4lo%2BVw0MccTS6aGGrIk66wsJEZasgNuLhGn03fzVxCOLgmjY6Z/qCvZHfJZMwGmnSl/cUzQw3nHA01uB5c%2BnqGwZHRuxM9VL3fgR90tFLOnX1Ej8RK0/TRo0fCrzA9PY22NevPMSkNGc2HQ9OkUc%2BHEOcLuSvCIqzfCSZEDkJRqKFsDlw%2BMpoMh9D0gj5OR0rdGiY4PqjZCCvI0aSr7FBgqCFYC6GkURoymgaH5kwa%2BoeO/pVLZWnYj96fbkJBG08CIrVa7eHDh8rcles5X3pv0kw45NkNx7Q54EyIjEVmbYOrhPovZTL8UmG5b598WFqZyGgCHPomjahpDhV8k8zPncKB%2BvkhLDJthg815MPSEB%2BONFsqmdKmk4GsfbTfL7x3ziVJEg07uENyhVA09M%2BAEahmV2PexIRiUT5K0pYaDNoDmnZ4LQAH19yNq4QmSXL//n3h15mamhIaBVct1GgIDg0ZXEtXJGRgKBzCp69ZH%2BrJuHfvnuxQ4MrQ6B7XSoUaxeFQNlyTW7pCffnyJbzh0NAQMhv0D1Re0UMb/slFlJC70lU8XFWj9KFGQTgaacUX7QSNeuUsLS0550ZGRgQ%2BaMwRjBB6f6/bt29rcleh6WeUjxKHGv//kAuQwXWCRg%2BJ2vm8vTsnJiZkOELky/msW7duyblrWNa1tbUVbuQFw1VwKPngiM6MZJ6eCnMH1JlP3zF%2BZmYmOrfCtRoOX968eVN2KBALf88lscVOdK6EWxHIQM8GGnaIBUwf8h4kEFZdzM/PZ/4M8EZ%2BW%2BGUb2XuWnr1NIUMobMWui9w8gjS4uJi9MdAic%2BNGzcyHcrm5iZyKHQ1eXS1cBXMRjYceckQlv/rO14odfnyZa7kev36ddlPIW8CfUq0BX1mXl05tyKs/ecarkUX1/ir/jBEpXyweeXKlfAjOcXsP8xd5TJ5BXNXreWQV/AqmzT6a%2BOuRKOrV6/6m2vXrgnfNjk5STMUDpHqFEMLwpG5Y11uhLI3ZCg1NTUVzV3pUUhVDjUy3IpMhmaW3N/rG65dunQpfPp37txpxa8aZuRRMYP2EOYOtqmaZ8lOZTUbUKPeRE/GxYsX4Ufv8xHn3N27d5v4q8LAk25ZE3qNV1Y9erOBziLhmp/kjTMWFxeFBkg9PT0PHjxo/PccHx%2BniQnchGKhRm446OFWqPqJyEjTNNdBJBcuXBD2faCfRF6tIyic64zCz2gl1EINFo5MswHJQKv%2B0zT1M2caLSws0BatvqIQ5TVI3qZGBU/vjZKR6VMq61xylM8zJ%2BX1ZMzNzdFuBbTWFDVgExMT/hW53UrQ5uZmaAgpdOGJrtiouHoyw8/MBvL%2BZmVlRTmkX1wj9GB0sUVf0LtBQOXa2unTp9HsSfRc5yrsM2gUDsGncOlJmqbfvn3Tjzc5ORmYgO2e6YHbst1yYHGh/wZ0AvSpU6e407KMjKbBISQpaZr%2B%2BPFDOdLExATEQrlBCLkVaD8c2fayu7u7vLx88uRJ2GI8emKBEIGWYHd8G%2BCgZfJfv34ph/FnFkEJkSAHB7ehAcLhnINBjDAiOrTAyMgdkNINB%2BGqJwOdfUcfVXQRXnRzm0BG%2BF8w96GICC2F0ftYQJpmFkapVldX9QMMDw/7ZxA9rSh6Gg0NSDn7wcGB7Ec08hV6uhkZOVJZ%2BNGvra3pv39oaAg%2BG81By47ZhRA1Y9FNtrSqxh17Y2QUhMNvAghXr42NDeX7Dg4Ohj9fjeOPlp7kHXWceeMQ0fQTNjKKZytJkvz9%2BzfzTU%2BcOAH/apFb0Rw%2BwhVJqSFxsX5AiA/EimOWdRkZBescMJtdX18X3vHYsWPQ/XOnLOctV%2BsbA0Wn8TLPyTIyCsJB7QfHx5EjR%2BBHT49YLtAZJ7OPFOcWhauR0YTyufvvfnlYKv3z5w/8j4cOHYL1BsgHyh5zHSfAJVC5OkV1aV/6joaDMx6BksDHgQMHaDEqminkPZlGzq6VzaKENzcyGoLDMdtD/HV9fX1gYAB%2BMzIDaEa%2B2PkjeTvdaiAwLHLD4RRHfCNbgkiikaB8HmKxZKFAA0IjoyVFMO6jrNfr3ARHtNJA08vCj6rY0zUmmmY55NJkZq83TRqZ19oX64htTDQNDqfoKKovUzYLi1zEGA0thEPgw%2BVsLqupUtuz7EzVlH%2BRHA3R5ypUpg2LMlgOpzv5gL7CVR4tmSwVHJmIKG2JYVFaOLjAIjNxkD2OqSRwuGacqmRYlBaORigxLKoCh5ISA8JkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMkX1L3lVTaI0vxkhAAAAAElFTkSuQmCC%22%2C%22sizes%22%3A%22180x180%22%2C%22type%22%3A%22image/png%22%7D%5D%7D">
+<style>
+/* Layout: one column (max 720px) over a frosted black ground. Every surface is a glass pane: blurred backdrop, hairline edge, a faint specular highlight. Motion is springy and short. Single committed dark look. */
+:root{
+  --bg:#000;
+  --glass:rgba(255,255,255,.055);
+  --glass-strong:rgba(255,255,255,.11);
+  --glass-edge:rgba(255,255,255,.13);
+  --glass-hi:rgba(255,255,255,.22);
+  --border:rgba(255,255,255,.09);
+  --fg:#fff;
+  --fg-soft:rgba(255,255,255,.84);
+  --muted:rgba(255,255,255,.56);
+  --dim:rgba(255,255,255,.34);
+  --line:#fff;
+  --line-2:#8e8e93;
+  --up:#62e3a1;
+  --down:#ff7070;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --r-card:30px;
+  --r:20px;
+  --spring:cubic-bezier(.34,1.45,.64,1);
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --blur:blur(26px) saturate(170%);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:16px/1.45 var(--font);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;overflow-x:hidden;min-height:100%}
+[hidden]{display:none!important}
+button,input{font:inherit;color:inherit}
+button{background:none;border:0;padding:0;cursor:pointer;text-align:inherit;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+:focus-visible{outline:2px solid var(--fg);outline-offset:3px;border-radius:10px}
+
+/* frosted ground: slow drifting soft light behind the glass */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:#000}
+.bg i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;will-change:transform}
+.bg .b1{width:70vmax;height:70vmax;left:-25vmax;top:-20vmax;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 65%);animation:drift1 38s ease-in-out infinite alternate}
+.bg .b2{width:60vmax;height:60vmax;right:-25vmax;top:30vh;background:radial-gradient(circle,rgba(150,160,190,.16),transparent 65%);animation:drift2 46s ease-in-out infinite alternate}
+.bg .b3{width:50vmax;height:50vmax;left:10vw;bottom:-25vmax;background:radial-gradient(circle,rgba(255,255,255,.09),transparent 65%);animation:drift1 52s ease-in-out infinite alternate-reverse}
+@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(12vw,10vh) scale(1.15)}}
+@keyframes drift2{from{transform:translate(0,0) scale(1.1)}to{transform:translate(-10vw,-12vh) scale(.95)}}
+
+/* glass surfaces */
+.glass{position:relative;background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-edge);box-shadow:inset 0 1px 0 var(--glass-hi),inset 0 -1px 0 rgba(255,255,255,.03),0 18px 50px rgba(0,0,0,.55)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(130% 70% at 18% -10%,rgba(255,255,255,.13),transparent 60%)}
+
+.app{position:relative;max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px 72px}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px 18px}
+.brand{font-weight:600;font-size:18px;letter-spacing:-.01em}
+.tabs{position:relative;display:flex;border-radius:999px;padding:3px;width:188px}
+.tabs .ind{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:rgba(255,255,255,.94);box-shadow:0 2px 12px rgba(255,255,255,.25);transition:transform .55s var(--spring)}
+.tabs.learn .ind{transform:translateX(100%)}
+.tab{position:relative;flex:1;text-align:center;padding:8px 0;border-radius:999px;font-size:14px;font-weight:600;color:var(--muted);transition:color .35s var(--ease)}
+.tab.is-active{color:#000}
+
+/* panels: liquid entrance */
+.panel{animation:rise .55s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+
+/* chart card */
+.chart-card{border-radius:var(--r-card);overflow:hidden;margin:0 0 18px;background:rgba(6,6,10,.55)}
+.chart-card::before{opacity:.7}
+.legend{display:flex;flex-direction:column;gap:4px;padding:18px 22px 2px}
+.keys{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:17px;font-weight:500;min-width:0}
+.key{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.key.bench{color:var(--line-2)}
+.swatch{display:inline-block;width:22px;height:4px;border-radius:2px;background:var(--line);box-shadow:0 0 8px rgba(255,255,255,.75);flex:none}
+.key.bench .swatch{background:var(--line-2);box-shadow:none}
+.legend .delta{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:1.4em}
+.chart{position:relative;height:240px;touch-action:pan-y;cursor:crosshair}
+.chart svg{display:block;width:100%;height:100%;overflow:hidden}
+.chart-card.mini .chart{height:170px;cursor:default}
+.chart-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:8px 16px 14px}
+.seg{display:flex;position:relative;background:rgba(255,255,255,.07);border-radius:999px;padding:2px;border:1px solid rgba(255,255,255,.06)}
+.seg button{padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.02em;transition:background .35s var(--ease),color .35s var(--ease),transform .3s var(--spring)}
+.seg button.is-active{background:rgba(255,255,255,.16);color:var(--fg);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.seg button:active{transform:scale(.94)}
+
+/* time + play */
+.timebar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-radius:26px;padding:14px 16px;margin-bottom:26px}
+.day{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.day b{font-weight:600;font-variant-numeric:tabular-nums;font-size:15px}
+.day span{font-size:12px;color:var(--muted);white-space:nowrap}
+.btns{display:flex;gap:6px}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 18px;border-radius:999px;font-weight:600;font-size:15px;color:var(--fg);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.14);white-space:nowrap;line-height:1.2;transition:background .35s var(--ease),transform .35s var(--spring),opacity .2s}
+.btn:hover{background:rgba(255,255,255,.14)}
+.btn:active{transform:scale(.95)}
+.btn.primary{background:rgba(255,255,255,.94);color:#000;border-color:transparent;box-shadow:0 4px 18px rgba(255,255,255,.18)}
+.btn.primary:hover{background:#fff}
+.btn.small{padding:9px 14px;font-size:14px}
+.btn.is-on{background:rgba(255,255,255,.2)}
+.btn:disabled{opacity:.35;cursor:default;transform:none}
+
+/* summary */
+.stats{display:flex;flex-direction:column;gap:4px;padding:0 4px 28px}
+.label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.value{font-size:44px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.03em;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.meta{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:6px}
+.meta b{color:var(--fg);font-weight:500}
+.pos{color:var(--up)}
+.neg{color:var(--down)}
+
+/* section heading */
+.h{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 6px 8px}
+
+/* markets */
+.list{list-style:none;margin:0 0 22px;padding:4px;border-radius:var(--r-card)}
+.list li+li .row{border-top:1px solid var(--border)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 64px auto;align-items:center;gap:14px;width:100%;padding:13px 16px;border-radius:24px;transition:background .35s var(--ease),transform .35s var(--spring)}
+.row:active{transform:scale(.985)}
+.row.is-sel{background:rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.16)}
+.list li.sel+li .row,.row.is-sel{border-top-color:transparent}
+.id{display:flex;flex-direction:column;min-width:0;line-height:1.3}
+.tk{font-weight:600;font-size:16px}
+.nm{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.spark{width:64px;height:24px;display:block}
+.pr{text-align:right;font-variant-numeric:tabular-nums;line-height:1.3;white-space:nowrap}
+.pr b{display:block;font-weight:600}
+.pr span{font-size:13px}
+
+/* trade */
+.trade{border-radius:var(--r-card);padding:18px;margin-bottom:26px;display:flex;flex-direction:column;gap:14px}
+.trade-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.trade-head .id{line-height:1.25}
+.trade-head .tk{font-size:18px}
+.trade-head .price{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.qty input{width:100%;min-width:0;background:rgba(0,0,0,.35);border:1px solid var(--border);border-radius:16px;height:50px;text-align:center;font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;-moz-appearance:textfield;appearance:textfield;color:var(--fg);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);font-size:13px;font-weight:500;color:var(--fg-soft);transition:background .35s var(--ease),transform .35s var(--spring)}
+.chip:hover{background:rgba(255,255,255,.14)}
+.chip:active{transform:scale(.94)}
+.tot{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;margin:-4px 0 0}
+.trade-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* holdings */
+.hold{margin:0 0 26px;padding:4px;list-style:none;border-radius:var(--r-card)}
+.hold li{display:flex;align-items:center;gap:10px;padding:8px 12px 8px 0}
+.hold li+li{border-top:1px solid var(--border)}
+.hrow{flex:1;min-width:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:8px 0 8px 16px;border-radius:20px;transition:transform .35s var(--spring)}
+.hrow:active{transform:scale(.985)}
+.sellall{flex:none;font-size:12px;font-weight:600;color:var(--muted);background:rgba(255,255,255,.07);border-radius:999px;padding:7px 11px;transition:background .3s var(--ease),transform .3s var(--spring)}
+.sellall:hover{background:rgba(255,255,255,.14)}
+.sellall:active{transform:scale(.94)}
+.empty{color:var(--muted);font-size:14px;margin:0;padding:4px 6px 26px;line-height:1.5}
+
+/* news */
+.feed{list-style:none;margin:0 0 26px;padding:0 6px;display:flex;flex-direction:column;gap:10px}
+.feed li{display:flex;gap:12px;font-size:14px;color:var(--fg-soft);align-items:baseline;line-height:1.4;animation:rise .5s var(--ease) both}
+.feed time{color:var(--dim);font-variant-numeric:tabular-nums;flex:none;min-width:48px;font-size:13px}
+.feed span{min-width:0}
+.feed b{font-variant-numeric:tabular-nums;flex:none;margin-left:auto;font-weight:600}
+.feed li.empty{padding:0 0 10px}
+
+.fine{font-size:13px;color:var(--dim);line-height:1.55;margin:0 6px}
+.link{color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-size:inherit}
+.link:hover{color:var(--fg)}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px) scale(.96);background:rgba(255,255,255,.16);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 12px 40px rgba(0,0,0,.5);color:#fff;padding:11px 20px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .35s var(--ease),transform .5s var(--spring);max-width:calc(100% - 32px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;z-index:20}
+.toast.show{opacity:1;transform:translate(-50%,0) scale(1)}
+
+/* learn */
+.learn{max-width:64ch}
+.learn-intro{margin:4px 6px 22px;color:var(--fg-soft);line-height:1.6}
+.learn-intro .fine{margin:8px 0 0}
+.lesson{border-radius:24px;margin-bottom:10px;transition:background .4s var(--ease)}
+.lesson[open]{background:var(--glass-strong)}
+.lesson summary{list-style:none;display:grid;grid-template-columns:28px minmax(0,1fr) 14px;gap:12px;align-items:start;padding:18px 18px;cursor:pointer}
+.lesson summary::-webkit-details-marker{display:none}
+.lesson .n{font-size:12px;color:var(--dim);font-variant-numeric:tabular-nums;letter-spacing:.06em;padding-top:5px}
+.lesson h3{margin:0;font-size:18px;font-weight:600;letter-spacing:-.01em;text-wrap:balance;line-height:1.3}
+.lesson .teaser{display:block;margin-top:3px;font-size:14px;color:var(--muted);font-weight:400;line-height:1.4}
+.lesson .chev{width:9px;height:9px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);transition:transform .5s var(--spring);margin-top:9px;justify-self:end}
+.lesson[open] .chev{transform:rotate(-135deg)}
+.lesson .body{padding:0 18px 22px;color:var(--fg-soft);line-height:1.6;animation:rise .5s var(--ease) both}
+.body p{margin:0 0 14px}
+.body ul{margin:0 0 14px;padding-left:20px}
+.body li{margin-bottom:7px}
+.body .try{margin:2px 0 8px}
+.gloss{margin:0;display:grid;grid-template-columns:1fr;gap:10px}
+.gloss div{display:grid;grid-template-columns:minmax(0,1fr);gap:2px}
+.gloss dt{font-weight:600;color:var(--fg)}
+.gloss dd{margin:0;font-size:15px}
+.demo{display:flex;flex-direction:column;gap:16px;margin:4px 0 14px}
+.ctrl{display:flex;flex-direction:column;gap:8px}
+.ctrl label{display:flex;justify-content:space-between;font-size:14px;color:var(--muted)}
+.ctrl output{color:var(--fg);font-weight:600;font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:rgba(255,255,255,.18);border-radius:2px;margin:6px 0;outline-offset:8px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 0 12px rgba(255,255,255,.6);cursor:pointer;border:0}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 0 12px rgba(255,255,255,.6);cursor:pointer;border:0}
+.demo .chart-card{margin:6px 0 4px}
+.demo-out{margin:0;font-size:15px;line-height:1.55}
+.demo-out b{font-variant-numeric:tabular-nums}
+
+/* quiz */
+.quiz{margin-top:30px;border-radius:var(--r-card);padding:20px 18px}
+.quiz h3{margin:0 0 4px;font-size:18px;letter-spacing:-.01em}
+.quiz .lead{margin:0 0 18px;color:var(--muted);font-size:14px}
+.q{margin-bottom:20px}
+.q p{font-weight:600;margin:0 0 8px;line-height:1.4}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:14px;cursor:pointer;font-size:15px;line-height:1.4;transition:border-color .3s var(--ease),background .3s var(--ease)}
+.opt:hover{background:rgba(255,255,255,.1)}
+.opt input{accent-color:#fff;margin:4px 0 0;flex:none}
+.opt.correct{border-color:var(--up)}
+.opt.wrong{border-color:var(--down)}
+.why{font-size:14px;color:var(--muted);margin:8px 0 0;line-height:1.5}
+.qscore{margin:16px 0 0;font-weight:600}
+
+@media (min-width:600px){
+  .chart{height:300px}
+  .value{font-size:50px}
+  .gloss{grid-template-columns:1fr 1fr;gap:14px 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  .bg i{animation:none!important}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .glass{background:rgba(22,22,28,.92)}
+}
+</style>
+<style>html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+
+
+<div class="bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+<div class="app">
+  <header class="top">
+    <div class="brand">Paper Market</div>
+    <nav class="tabs glass" id="tabs" aria-label="Sections">
+      <span class="ind" aria-hidden="true"></span>
+      <button class="tab is-active" data-tab="sim" type="button">Simulate</button>
+      <button class="tab" data-tab="learn" type="button">Learn</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="sim" class="panel" aria-label="Simulator">
+
+      <div class="chart-card glass">
+        <div class="legend">
+          <div class="keys">
+            <span class="key"><i class="swatch"></i><span id="legendMain">VOO ($536.14)</span></span>
+            <span class="key bench"><i class="swatch"></i><span>S&amp;P 500 Index</span></span>
+          </div>
+          <span class="delta" id="chartDelta"></span>
+        </div>
+        <div class="chart" id="chart"><svg id="svg" aria-label="Price chart" role="img"></svg></div>
+        <div class="chart-foot">
+          <div class="seg" aria-label="Chart view">
+            <button class="is-active" id="vPrice" type="button">VOO</button>
+            <button id="vPort" type="button">Portfolio</button>
+          </div>
+          <span class="seg" aria-label="Time range">
+            <button class="is-active" data-range="22" type="button">1M</button>
+            <button data-range="66" type="button">3M</button>
+            <button data-range="0" type="button">All</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="timebar glass">
+        <div class="day"><b id="dayLabel">Day 0</b><span id="dateLabel"></span></div>
+        <div class="btns">
+          <button class="btn small" id="btnDay" type="button">+1 day</button>
+          <button class="btn small" id="btnWeek" type="button">+1 week</button>
+          <button class="btn small" id="btnAuto" type="button">Play</button>
+        </div>
+      </div>
+
+      <div class="stats">
+        <span class="label">Portfolio value</span>
+        <span class="value" id="statTotal">$10,000.00</span>
+        <span class="sub" id="statReturn">+0.00% since start</span>
+        <div class="meta"><span>Cash <b id="statCash">$10,000.00</b></span><span>Invested <b id="statInvested">$0.00</b></span><span>S&amp;P 500 <b id="statVs">+0.00%</b></span></div>
+      </div>
+
+      <h2 class="h">Markets</h2>
+      <ul class="list glass" id="marketList"></ul>
+
+      <h2 class="h">Trade</h2>
+      <div class="trade glass">
+        <div class="trade-head">
+          <span class="id"><b class="tk" id="tradeTicker">VOO</b><span class="nm" id="tradeName">Vanguard S&amp;P 500 ETF</span></span>
+          <span class="price" id="tradePrice">$536.14</span>
+        </div>
+        <div class="qty"><input id="qty" type="number" min="0" step="any" value="1" inputmode="decimal" aria-label="Number of shares"></div>
+        <div class="chips" aria-label="Quick amounts">
+          <button class="chip" data-amt="100" type="button">$100</button>
+          <button class="chip" data-amt="500" type="button">$500</button>
+          <button class="chip" data-amt="1000" type="button">$1,000</button>
+          <button class="chip" data-amt="max" type="button">Max</button>
+        </div>
+        <p class="tot" id="tradeTotal">1 share ≈ $536.14</p>
+        <div class="trade-btns">
+          <button class="btn primary" id="btnBuy" type="button">Buy</button>
+          <button class="btn" id="btnSell" type="button" disabled>Sell</button>
+        </div>
+      </div>
+
+      <h2 class="h">Holdings</h2>
+      <div id="holdings"></div>
+
+      <h2 class="h">News</h2>
+      <ul class="feed" id="feed"></ul>
+
+      <p class="fine">Prices are simulated with random walks and made-up news, not live market data. You start with $10,000 of play money and fractional shares are allowed. <button class="link" id="btnReset" type="button">Reset simulation</button></p>
+    </section>
+
+    <section id="learn" class="panel learn" aria-label="Learn to invest" hidden>
+      <div class="learn-intro">
+        <p>Eleven short lessons, in the order they matter. Each one points back at something you can try in the simulator.</p>
+        <p class="fine">This is general education, not personal financial advice. Nobody here knows your situation.</p>
+      </div>
+
+      <details class="lesson glass" open>
+        <summary><span class="n">01</span><span><h3>What a share actually is</h3><span class="teaser">Ownership, not a bet</span></span><i class="chev"></i></summary>
+        <div class="body">
+          <p>A share is a tiny slice of a company. Buy one and you own that slice: a claim on part of the profits (paid out as dividends or reinvested to grow the business) and usually a vote at the annual meeting. Apple has around 15 billion shares, so one share is a very small slice, but it is real ownership rather than a wager on a number.</p>
+          <p>The price is simply the last figure a buyer and a seller agreed on. It moves when people change their minds about the company's future profits. Over years, prices tend to follow those profits. Over days, they follow mood, headlines and guesswork, which is why a stock can drop 3% on a day when nothing happened to the company at all.</p>
+          <button class="btn small try" data-try="AAPL" type="button">Try it: watch AAPL for a week →</button>
+        </div>
+      </details>
+
+      <details class="lesson glass">
+        <summary><span class="n">02</span><span><h3>Index funds, and why the grey line matters</h3><span class="teaser">500 companies in one purchase</span></span><i class="chev"></i></summary>
+        <div class="body">
+          <p>The S&amp;P 500 is a list of about 500 of the largest companies in the United States, weighted by size, so Apple and Microsoft count for far more than a regional bank. Nobody can buy the list itself, but a fund can buy every company on it and sell you a slice of the whole bundle. VOO is one such fund: one purchase and you own all 500.</p>
+          <p>That is why the grey line sits in every chart here. It is the benchmark, the result you would have got by doing the simplest possible thing. "Beating the market" means staying above that line. Most professional fund managers fail to do it over ten or more years once fees are counted, which is why a plain index fund is the usual starting point.</p>
+          <button class="btn small try" data-try="VOO" type="button">Try it: chart VOO against the index →</button>
+        </div>
+      </details>
+
+      <details class="lesson glass">
+        <summary><span class="n">03</span><span><h3>Risk and return move together</h3><span class="teaser">Bigger swings are the price of bigger gains</span></span><i class="chev"></i></summary>
+        <div class="body">
+          <p>Volatility is how much a price swings. In the simulator BND barely moves, VOO drifts, NVDA and TSLA lurch, and MEME is a coin toss. Each is modelled on how the real thing tends to behave.</p>
+          <p>Higher expected returns almost always come packaged with bigger swings. The catch is that a big swing down can arrive exactly when you need the money. A common rule of thumb: money you will need within five years does not belong in anything that can halve.</p>
+          <button class="btn small try" data-try="MEME" type="button">Try it: $5,000 in BND, $5,000 in MEME, play a month →</button>
+        </div>
+      </details>
+
+      <details class="lesson glass">
+        <summary><span class="n">04</span><span><h3>Diversification is the only free lunch</h3><span class="teaser">Spread the risk you are not paid to take</span></span><i class="chev"></i></summary>
+        <div class="body">
+          <p>Hold one company and a single bad earnings call can take a fifth off your portfolio overnight. Hold hundreds across different industries and the individual disasters mostly cancel out, while the general growth of business stays. You get a smoother ride without giving up much return, which is why economists call it the only free lunch in investing.</p>
+          <p>It does not protect you from everything. When the whole market falls, nearly everything falls with it. What it removes is the risk that one company's mistake wipes you out.</p>
+          <button class="btn small try" data-try="NVDA" type="button">Try it: one stock vs VOO over a few months →</button>
+        </div>
+      </details>
+
+      <details class="lesson glass">
+        <summary><span class="n">05</span><span><h3>Compounding</h3><span class="teaser">Growth on top of growth, with sliders</span></span><i class="chev"></i></summary>
+        <div class="body">
+          <p>Compounding is growth on top of growth. Your money earns a return, and next year that return earns a return of its own. Early on the effect is boring. After a couple of decades it is most of the money. Drag the sliders and watch the gap open between investing and simply saving.</p>
+          <div class="demo">
+            <div class="ctrl"><label for="cMonthly"><span>Monthly amount</span><output id="cMonthlyOut">$100</output></label><input type="range" id="cMonthly" min="10" max="1000" step="10" value="100"></div>
+            <div class="ctrl"><label for="cYears"><span>Years</span><output id="cYearsOut">30</output></label><input type="range" id="cYears" min="1" max="40" step="1" value="30"></div>
+            <div class="ctrl"><label for="cRate"><span>Average return per year</span><output id="cRateOut">7%</output></label><input type="range" id="cRate" min="0" max="12" step="0.5" value="7"></div>
+            <div class="chart-card mini glass">
+              <div class="legend"><div class="keys"><span class="key"><i class="swatch"></i><span id="cLegMain">Invested at 7%</span></span><span class="key bench"><i class="swatch"></i><span>Kept as cash</span></span></div></div>
+              <div class="chart" id="cChart"><svg id="cSvg" aria-label="Compounding chart" role="img"></svg></div>
+            </div>
+            <p class="demo-out" id="cOut"></p>
+          </div>
+          <p>Real markets do not return the same figure every year, so treat the rate as a long-run average rather than a promise. The S&amp;P 500 has averaged roughly 10% a year over the past century before inflation, and around 7% after it.</p>
+        </div>
+      </details>
+
+      <details class="lesson glass">
+        <summary><span class="n">06</span><span><h3>Dollar-cost averaging</h3><span class="teaser">Same amount, same day, every month</span></span><i class="chev"></i></summary>
+        <div class="body">
+          <p>Dollar-cost averaging means investing a fixed amount on a fixed schedule, say $100 on the first of every month, whatever the price is doing. When prices are high your $100 buys fewer shares; when they are low it buys more. You stop asking "is now a good time?" because the answer is always "it's the first of the month".</p>
+          <p>This is how most people invest in practice: a standing order on payday into a broad fund. It will not beat a perfectly timed lump sum, but nobody times lump sums perfectly, and it keeps you from freezing when the market looks scary.</p>
+          <button class="btn small try" data-try="VOO" type="button">Try it: buy $100 of VOO, press +1 week, repeat →</button>
+        </div>
+      </details>
+
+      <details class="lesson glass">
+        <summary><span class="n">07</span><span><h3>Time in the market beats timing it</h3><span class="teaser">The best days hide next to the worst ones</span></span><i class="chev"></i></summary>
+        <div class="body">
+          <p>Nobody reliably predicts short-term moves, including the people paid to try. Markets fall 10% or more at some point in most years, and the strongest days tend to cluster right after the worst ones, so investors who sell in a panic usually miss the rebound. Missing just a handful of the best days across a couple of decades cuts the final result dramatically.</p>
+          <p>Since the 1920s the S&amp;P 500, with dividends reinvested, has not lost money over any 20-year stretch, even though plenty of brutal years sit inside those windows. Past results guarantee nothing about the future, but the lesson has been consistent: how long you stay invested matters more than the moment you start.</p>
+          <button class="btn small try" data-try="VOO" type="button">Try it: press Play and leave it for 200 days →</button>
+        </div>
+      </details>
+
+      <details class="lesson glass">
+        <summary><span class="n">08</span><span><h3>Fees and taxes</h3><span class="teaser">Small percentages, large sums</span></span><i class="chev"></i></summary>
+        <div class="body">
+          <p>A 1% annual fee sounds like nothing. Over 30 years it removes roughly a fifth to a quarter of what you would otherwise finish with, because it is charged on the growth as well as the original money. Index ETFs typically charge between 0.03% and 0.2% a year. Actively managed funds often charge 0.5% to 1.5% for results that are usually worse.</p>
+          <p>Taxes work the same way in reverse. Most countries offer accounts where investment growth is not taxed, such as a Stocks and Shares ISA in the UK (or a Junior ISA for under-18s) and a Roth IRA in the US. Filling one of those before touching a plain brokerage account is one of the few decisions that is almost always right.</p>
+        </div>
+      </details>
+
+      <details class="lesson glass">
+        <summary><span class="n">09</span><span><h3>Mistakes beginners make</h3><span class="teaser">The simulator lets you make them for free</span></span><i class="chev"></i></summary>
+        <div class="body">
+          <ul>
+            <li>Selling after a drop because it feels unbearable, which locks the loss in.</li>
+            <li>Buying whatever everyone is talking about, after it has already risen.</li>
+            <li>Checking the app ten times a day. More looking leads to more trading, and more trading tends to lower returns.</li>
+            <li>Borrowing money to invest, or using leverage. Losses get amplified just as much as gains.</li>
+            <li>Investing money you will need soon.</li>
+            <li>Confusing a great company with a great investment. Price matters: a brilliant business bought at too high a price can still lose you money.</li>
+            <li>Believing anyone who promises guaranteed returns. Nobody honest can.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="lesson glass">
+        <summary><span class="n">10</span><span><h3>Before you invest real money</h3><span class="teaser">A checklist, in order</span></span><i class="chev"></i></summary>
+        <div class="body">
+          <ul>
+            <li>An emergency fund first: a few months of expenses sitting in cash.</li>
+            <li>No expensive debt (credit cards, overdrafts) running alongside your investments.</li>
+            <li>A horizon of at least five years, ideally much longer.</li>
+            <li>Only money you could lose entirely without it changing your life.</li>
+            <li>Understand what you own. If you cannot explain it in one sentence, do not buy it.</li>
+            <li>Start boring, small and regular: a broad index fund, a fixed amount, every month.</li>
+            <li>If you are under 18 you usually cannot open an account yourself, but a parent or guardian can open a junior account in your name. Until then this simulator costs nothing to practise with.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="lesson glass">
+        <summary><span class="n">11</span><span><h3>Glossary</h3><span class="teaser">The words you will keep seeing</span></span><i class="chev"></i></summary>
+        <div class="body">
+          <dl class="gloss">
+            <div><dt>Ticker</dt><dd>The short code a stock trades under, like AAPL or VOO.</dd></div>
+            <div><dt>Share</dt><dd>One unit of ownership in a company.</dd></div>
+            <div><dt>ETF</dt><dd>Exchange-traded fund: a basket of investments you buy and sell like a single share.</dd></div>
+            <div><dt>Index</dt><dd>A list of stocks used to measure a market, such as the S&amp;P 500 or the FTSE 100.</dd></div>
+            <div><dt>Benchmark</dt><dd>The index you compare your results against. The grey line.</dd></div>
+            <div><dt>Dividend</dt><dd>Cash a company pays out to shareholders from its profits.</dd></div>
+            <div><dt>Volatility</dt><dd>How much a price swings. High volatility means big moves both ways.</dd></div>
+            <div><dt>Bull / bear market</dt><dd>A long rise / a fall of 20% or more from a peak.</dd></div>
+            <div><dt>Drawdown</dt><dd>How far a price has fallen from its highest point.</dd></div>
+            <div><dt>Market cap</dt><dd>Share price times number of shares: what the whole company is valued at.</dd></div>
+            <div><dt>P/E ratio</dt><dd>Share price divided by yearly profit per share. A rough gauge of how expensive a stock is.</dd></div>
+            <div><dt>Portfolio</dt><dd>Everything you hold, taken together.</dd></div>
+            <div><dt>Expense ratio</dt><dd>A fund's yearly fee as a percentage of your money.</dd></div>
+            <div><dt>Liquidity</dt><dd>How easily something can be sold for cash at a fair price.</dd></div>
+          </dl>
+        </div>
+      </details>
+
+      <div class="quiz glass" id="quiz">
+        <h3>Check yourself</h3>
+        <p class="lead">Six questions. Pick an answer for each, then check.</p>
+        <div id="quizBody"></div>
+        <button class="btn primary" id="btnQuiz" type="button">Check answers</button>
+        <p class="qscore" id="quizScore" hidden></p>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+const $=(s,el)=>(el||document).querySelector(s);
+const $$=(s,el)=>Array.from((el||document).querySelectorAll(s));
+const START_CASH=10000, HIST=60, SAVE_KEY='paper-market-v1', AUTO_MS=650;
+
+const INDEX={t:'SPX',n:'S&P 500 Index',p0:5840,mu:0.10,sig:0.15};
+const ASSETS=[
+  {t:'VOO', n:'Vanguard S&P 500 ETF',       p0:536.14,mu:0.10,sig:0.15,rho:0.985},
+  {t:'AAPL',n:'Apple',                      p0:228.40,mu:0.12,sig:0.27,rho:0.70},
+  {t:'MSFT',n:'Microsoft',                  p0:424.75,mu:0.12,sig:0.24,rho:0.70},
+  {t:'NVDA',n:'NVIDIA',                     p0:142.60,mu:0.22,sig:0.48,rho:0.60},
+  {t:'TSLA',n:'Tesla',                      p0:251.30,mu:0.08,sig:0.60,rho:0.50},
+  {t:'GLD', n:'Gold ETF',                   p0:247.90,mu:0.05,sig:0.14,rho:0.05},
+  {t:'BND', n:'Total Bond Market ETF',      p0:73.85, mu:0.03,sig:0.05,rho:-0.10},
+  {t:'MEME',n:'Meme Rocket Co. (fictional)',p0:4.20,  mu:-0.10,sig:1.20,rho:0.30}
+];
+const BY={}; ASSETS.forEach(a=>{BY[a.t]=a});
+
+const HEAD={
+  up:['{T} beats earnings expectations','{T} announces a share buyback','Analysts upgrade {T} to "buy"','{T} launches a product to strong reviews','{T} wins a major contract'],
+  down:['{T} misses its revenue forecast','{T} CEO steps down unexpectedly','Regulators open an inquiry into {T}','{T} recalls a flagship product','{T} warns of weaker demand next quarter'],
+  memeUp:['MEME goes viral on social media','A celebrity post sends MEME soaring'],
+  memeDown:['MEME hype fades as traders cash out','Short sellers pile into MEME'],
+  mktUp:['Central bank cuts rates; markets rally','Inflation cools more than expected','Strong jobs report lifts stocks'],
+  mktDown:['Trade tensions rattle global markets','Weak jobs report sparks a sell-off','Oil price spike drags markets lower']
+};
+
+/* ---------- random numbers ---------- */
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function gauss(r){let u=0,v=0;while(u===0)u=r();while(v===0)v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+const pick=(r,l)=>l[Math.floor(r()*l.length)];
+const last=a=>a[a.length-1];
+
+/* ---------- formatting ---------- */
+const fmt$=n=>(n<0?'−':'')+'$'+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmt$0=n=>(n<0?'−':'')+'$'+Math.round(Math.abs(n)).toLocaleString('en-US');
+const fmtPct=n=>(n>0?'+':n<0?'−':'')+Math.abs(n).toFixed(2)+'%';
+const fmtQ=q=>q.toLocaleString('en-US',{maximumFractionDigits:4});
+const sign=n=>n>0.000001?'pos':n<-0.000001?'neg':'';
+const signed$=n=>(n>=0?'+':'−')+fmt$(Math.abs(n));
+
+/* ---------- dates (business days from the start date) ---------- */
+function isoToday(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function bizDate(iso,n){const d=new Date(iso+'T12:00:00');let k=Math.abs(n),dir=n<0?-1:1;while(k>0){d.setDate(d.getDate()+dir);const w=d.getDay();if(w!==0&&w!==6)k--}return d}
+const fmtDate=d=>d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
+const shortDate=d=>d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+
+/* ---------- state ---------- */
+let S=null;
+function newState(){
+  const s={v:1,seed:(Math.random()*4294967296)>>>0,day:0,start:isoToday(),idx:[INDEX.p0],px:{},cash:START_CASH,hold:{},pv:[START_CASH],feed:[],sel:'VOO',view:'price',range:22};
+  ASSETS.forEach(a=>{s.px[a.t]=[a.p0]});
+  for(let d=-HIST;d<0;d++)stepPrices(s,d,false);
+  const k=INDEX.p0/last(s.idx); s.idx=s.idx.map(v=>v*k);
+  ASSETS.forEach(a=>{const arr=s.px[a.t],kk=a.p0/last(arr);s.px[a.t]=arr.map(v=>v*kk)});
+  return s;
+}
+function stepPrices(s,dayNo,live){
+  const r=mulberry32((s.seed^Math.imul(dayNo+1000,0x9E3779B1))>>>0);
+  const dt=1/252,sq=Math.sqrt(dt),zm=gauss(r);
+  s.idx.push(last(s.idx)*Math.exp((INDEX.mu-INDEX.sig*INDEX.sig/2)*dt+INDEX.sig*sq*zm));
+  ASSETS.forEach(a=>{
+    const zi=gauss(r),z=a.rho*zm+Math.sqrt(1-a.rho*a.rho)*zi,arr=s.px[a.t];
+    arr.push(last(arr)*Math.exp((a.mu-a.sig*a.sig/2)*dt+a.sig*sq*z));
+  });
+  if(!live)return;
+  const e=r();
+  if(e<0.02){
+    const up=r()<0.5,m=(0.025+r()*0.04)*(up?1:-1);
+    s.idx[s.idx.length-1]*=1+m;
+    ASSETS.forEach(a=>{const arr=s.px[a.t];arr[arr.length-1]*=1+m*a.rho});
+    pushFeed(s,{d:dayNo,text:pick(r,up?HEAD.mktUp:HEAD.mktDown),pct:m*100});
+  }else if(e<0.09){
+    const a=ASSETS[Math.floor(r()*ASSETS.length)];
+    if(a.t==='VOO')return;
+    const up=r()<0.5;let m=(0.05+r()*0.10)*(up?1:-1);if(a.t==='MEME')m*=2.2;
+    const arr=s.px[a.t];arr[arr.length-1]*=1+m;
+    const list=a.t==='MEME'?(up?HEAD.memeUp:HEAD.memeDown):(up?HEAD.up:HEAD.down);
+    pushFeed(s,{d:dayNo,text:pick(r,list).replace('{T}',a.t),pct:m*100});
+  }
+}
+function pushFeed(s,item){s.feed.unshift(item);if(s.feed.length>8)s.feed.length=8}
+const price=t=>last(S.px[t]);
+function total(s){let v=s.cash;for(const t in s.hold)v+=s.hold[t].q*last(s.px[t]);return v}
+
+function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(S))}catch(e){}}
+function load(){try{const s=JSON.parse(localStorage.getItem(SAVE_KEY));if(s&&s.v===1&&s.px&&Array.isArray(s.idx)&&ASSETS.every(a=>Array.isArray(s.px[a.t])))return s}catch(e){}return null}
+
+/* ---------- simulation controls ---------- */
+function advance(n){
+  for(let i=0;i<n;i++){S.day++;stepPrices(S,S.day,true);S.pv.push(total(S))}
+  save();renderAll();
+}
+let timer=null;
+function startAuto(){if(timer)return;timer=setInterval(()=>advance(1),AUTO_MS);const b=$('#btnAuto');b.textContent='Pause';b.classList.add('is-on')}
+function stopAuto(){if(!timer)return;clearInterval(timer);timer=null;const b=$('#btnAuto');b.textContent='Play';b.classList.remove('is-on')}
+
+/* ---------- trading ---------- */
+function qty(){const v=parseFloat($('#qty').value);return isFinite(v)&&v>0?v:0}
+function afterTrade(){S.pv[S.pv.length-1]=total(S);save();renderAll()}
+function buy(t,q){
+  const p=price(t),cost=p*q;
+  if(!(q>0))return toast('Enter how many shares to buy');
+  if(cost>S.cash+1e-6)return toast('Not enough cash for that');
+  const h=S.hold[t]||{q:0,avg:0};
+  h.avg=(h.q*h.avg+cost)/(h.q+q);h.q+=q;S.hold[t]=h;S.cash-=cost;
+  afterTrade();toast('Bought '+fmtQ(q)+' '+t+' for '+fmt$(cost));
+}
+function sell(t,q){
+  const h=S.hold[t];
+  if(!h||h.q<=0)return toast('You don’t hold any '+t);
+  if(!(q>0))return toast('Enter how many shares to sell');
+  if(q>h.q+1e-6)return toast('You only hold '+fmtQ(h.q)+' '+t);
+  q=Math.min(q,h.q);
+  const p=price(t),got=p*q,gain=(p-h.avg)*q;
+  h.q-=q;if(h.q<1e-6)delete S.hold[t];S.cash+=got;
+  afterTrade();toast('Sold '+fmtQ(q)+' '+t+' for '+fmt$(got)+' ('+signed$(gain)+')');
+}
+
+/* ---------- chart drawing ---------- */
+function smooth(p){
+  if(p.length<2)return'';
+  let d='M'+p[0].x.toFixed(1)+','+p[0].y.toFixed(1);
+  for(let i=0;i<p.length-1;i++){
+    const p0=p[i-1]||p[i],p1=p[i],p2=p[i+1],p3=p[i+2]||p2;
+    d+=' C'+(p1.x+(p2.x-p0.x)/6).toFixed(1)+','+(p1.y+(p2.y-p0.y)/6).toFixed(1)+' '+(p2.x-(p3.x-p1.x)/6).toFixed(1)+','+(p2.y-(p3.y-p1.y)/6).toFixed(1)+' '+p2.x.toFixed(1)+','+p2.y.toFixed(1);
+  }
+  return d;
+}
+function renderLine(svg,main,bench,o){
+  const box=svg.parentElement,w=box.clientWidth,h=box.clientHeight;
+  if(!w||!h)return null;
+  svg.setAttribute('viewBox','0 0 '+w+' '+h);
+  let M=main.length>1?main.slice():[main[0],main[0]],B=bench.length>1?bench.slice():[bench[0],bench[0]];
+  if(o.normalize){const m0=M[0]||1,b0=B[0]||1;M=M.map(v=>v/m0);B=B.map(v=>v/b0)}
+  let lo=Infinity,hi=-Infinity;
+  for(const v of M){if(v<lo)lo=v;if(v>hi)hi=v}
+  for(const v of B){if(v<lo)lo=v;if(v>hi)hi=v}
+  if(hi-lo<1e-9)hi=lo+1e-9;
+  const padT=22,padB=8,n=M.length,id=o.id;
+  const X=i=>i/(n-1)*w,Y=v=>padT+(hi-v)/(hi-lo)*(h-padT-padB);
+  const pm=M.map((v,i)=>({x:X(i),y:Y(v)})),pb=B.map((v,i)=>({x:X(i),y:Y(v)}));
+  const dm=smooth(pm),db=smooth(pb),close=' L'+w+','+h+' L0,'+h+' Z';
+  svg.innerHTML=
+    '<defs>'+
+    '<linearGradient id="'+id+'-gm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.55"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.03"/></linearGradient>'+
+    '<linearGradient id="'+id+'-gb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient>'+
+    '<filter id="'+id+'-glow" x="-10%" y="-40%" width="120%" height="180%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>'+
+    '</defs>'+
+    '<path d="'+db+close+'" fill="url(#'+id+'-gb)"/>'+
+    '<path d="'+dm+close+'" fill="url(#'+id+'-gm)"/>'+
+    '<path d="'+db+'" fill="none" stroke="#8e8e93" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'+
+    '<path d="'+dm+'" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#'+id+'-glow)"/>'+
+    '<g id="'+id+'-scrub"></g>';
+  return {pm:pm,pb:pb,w:w,h:h};
+}
+function spark(arr){
+  const w=64,h=24,p=2;let lo=Math.min.apply(null,arr),hi=Math.max.apply(null,arr);if(hi-lo<1e-9)hi=lo+1;
+  const pts=arr.map((v,i)=>({x:p+i/(arr.length-1)*(w-2*p),y:p+(hi-v)/(hi-lo)*(h-2*p)}));
+  return '<svg class="spark" viewBox="0 0 '+w+' '+h+'" aria-hidden="true"><path d="'+smooth(pts)+'" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.5" stroke-linecap="round"/></svg>';
+}
+
+/* ---------- main chart ---------- */
+let CH=null,scrubbing=false;
+function series(){
+  const s=S;let main,bench,label,off;
+  if(s.view==='portfolio'){main=s.pv.slice();bench=s.idx.slice(HIST);label='Portfolio';off=HIST}
+  else{main=s.px[s.sel].slice();bench=s.idx.slice();label=s.sel;off=0}
+  const n=main.length;let from=0;if(s.range>0&&n>s.range)from=n-s.range;
+  main=main.slice(from);bench=bench.slice(from);
+  const dates=main.map((_,i)=>bizDate(s.start,off+from+i-HIST));
+  return {main:main,bench:bench,label:label,dates:dates};
+}
+function drawMain(){
+  const box=$('#chart');if(!box.clientWidth)return;
+  const d=series();CH=d;
+  const g=renderLine($('#svg'),d.main,d.bench,{normalize:true,id:'m'});
+  if(!g)return;
+  CH.pts=g.pm;CH.w=g.w;CH.h=g.h;
+  setLegend(d.main.length-1,false);
+  $$('.seg [data-range]').forEach(b=>b.classList.toggle('is-active',+b.dataset.range===S.range));
+  $('#vPrice').textContent=S.sel;
+  $('#vPrice').classList.toggle('is-active',S.view!=='portfolio');
+  $('#vPort').classList.toggle('is-active',S.view==='portfolio');
+}
+function setLegend(i,scrub){
+  const d=CH;if(!d)return;
+  $('#legendMain').textContent=d.label+' ('+fmt$(d.main[i])+')';
+  const el=$('#chartDelta');
+  if(scrub){
+    const r=(d.main[i]/d.main[0]-1)*100;
+    el.innerHTML=fmtDate(d.dates[i])+' · <span class="'+sign(r)+'">'+fmtPct(r)+'</span>';
+  }else{
+    const mr=(last(d.main)/d.main[0]-1)*100,br=(last(d.bench)/d.bench[0]-1)*100;
+    el.innerHTML='<span class="'+sign(mr)+'">'+fmtPct(mr)+'</span> · S&amp;P 500 <span class="'+sign(br)+'">'+fmtPct(br)+'</span>';
+  }
+}
+function scrubAt(clientX){
+  const d=CH;if(!d||!d.pts)return;
+  const box=$('#chart'),x=clientX-box.getBoundingClientRect().left,n=d.pts.length;
+  const i=Math.max(0,Math.min(n-1,Math.round(x/d.w*(n-1)))),p=d.pts[i];
+  const g=$('#m-scrub');if(!g)return;
+  g.innerHTML='<line x1="'+p.x.toFixed(1)+'" x2="'+p.x.toFixed(1)+'" y1="0" y2="'+d.h+'" stroke="rgba(255,255,255,.28)" stroke-width="1"/><circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="5.5" fill="#ffffff" filter="url(#m-glow)"/>';
+  setLegend(i,true);
+}
+function scrubEnd(){scrubbing=false;const g=$('#m-scrub');if(g)g.innerHTML='';if(CH)setLegend(CH.main.length-1,false)}
+
+/* ---------- rendering ---------- */
+function renderTime(){$('#dayLabel').textContent='Day '+S.day;$('#dateLabel').textContent=fmtDate(bizDate(S.start,S.day))}
+function renderStats(){
+  const tot=total(S),inv=tot-S.cash,g=tot-START_CASH,ret=(tot/START_CASH-1)*100,sp=(last(S.idx)/S.idx[HIST]-1)*100;
+  $('#statTotal').textContent=fmt$(tot);
+  const r=$('#statReturn');r.className='sub '+sign(g);r.textContent=fmtPct(ret)+' · '+signed$(g)+' since start';
+  $('#statCash').textContent=fmt$(S.cash);
+  $('#statInvested').textContent=fmt$(inv);
+  const v=$('#statVs');v.className=sign(sp);v.textContent=fmtPct(sp);
+}
+function renderMarkets(){
+  $('#marketList').innerHTML=ASSETS.map(a=>{
+    const arr=S.px[a.t],p=last(arr),pr=arr[arr.length-2]||p,ch=(p/pr-1)*100;
+    const sel=S.sel===a.t&&S.view!=='portfolio';
+    return '<li'+(sel?' class="sel"':'')+'><button class="row'+(sel?' is-sel':'')+'" data-t="'+a.t+'" type="button" aria-pressed="'+sel+'">'+
+      '<span class="id"><b class="tk">'+a.t+'</b><span class="nm">'+a.n+'</span></span>'+spark(arr.slice(-22))+
+      '<span class="pr"><b>'+fmt$(p)+'</b><span class="'+sign(ch)+'">'+fmtPct(ch)+'</span></span></button></li>';
+  }).join('');
+}
+function renderTrade(){
+  const t=S.sel,p=price(t),h=S.hold[t],q=qty();
+  $('#tradeTicker').textContent=t;$('#tradeName').textContent=BY[t].n;$('#tradePrice').textContent=fmt$(p);
+  $('#tradeTotal').textContent=q>0?fmtQ(q)+(q===1?' share':' shares')+' ≈ '+fmt$(q*p):'Enter a number of shares';
+  const sb=$('#btnSell');sb.disabled=!h;sb.textContent=h?'Sell · '+fmtQ(h.q)+' held':'Sell';
+}
+function renderHoldings(){
+  const el=$('#holdings'),ks=Object.keys(S.hold);
+  if(!ks.length){el.innerHTML='<p class="empty">Nothing yet. Pick a market above and buy a few shares to start.</p>';return}
+  el.innerHTML='<ul class="hold">'+ks.map(t=>{
+    const h=S.hold[t],p=price(t),v=h.q*p,gain=v-h.q*h.avg,pl=(p/h.avg-1)*100;
+    return '<li><button class="hrow" data-t="'+t+'" type="button"><span class="id"><b class="tk">'+t+'</b><span class="nm">'+fmtQ(h.q)+' shares · avg '+fmt$(h.avg)+'</span></span>'+
+      '<span class="pr"><b>'+fmt$(v)+'</b><span class="'+sign(gain)+'">'+fmtPct(pl)+' · '+signed$(gain)+'</span></span></button>'+
+      '<button class="sellall" data-sellall="'+t+'" type="button">Sell all</button></li>';
+  }).join('')+'</ul>';
+}
+function renderFeed(){
+  const ul=$('#feed');
+  if(!S.feed.length){ul.innerHTML='<li class="empty">Quiet so far. Headlines arrive as days pass. Most days nothing happens, which is realistic.</li>';return}
+  ul.innerHTML=S.feed.map(f=>'<li><time>'+shortDate(bizDate(S.start,f.d))+'</time><span>'+f.text+'</span><b class="'+sign(f.pct)+'">'+fmtPct(f.pct)+'</b></li>').join('');
+}
+function renderAll(){renderTime();renderStats();renderMarkets();renderTrade();renderHoldings();renderFeed();drawMain()}
+function select(t){S.sel=t;S.view='price';save();renderMarkets();renderTrade();drawMain()}
+
+/* ---------- toast ---------- */
+let toastT=null;
+function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2600)}
+
+/* ---------- tabs ---------- */
+function showTab(name){
+  $$('.tab').forEach(b=>b.classList.toggle('is-active',b.dataset.tab===name));
+  $('#tabs').classList.toggle('learn',name==='learn');
+  const panel=$('#'+name);
+  if(panel.hidden){panel.style.animation='none';void panel.offsetWidth;panel.style.animation='';}
+  $('#sim').hidden=name!=='sim';$('#learn').hidden=name!=='learn';
+  if(name!=='sim')stopAuto();
+  requestAnimationFrame(()=>{if(name==='sim')drawMain();else drawCompound()});
+  window.scrollTo({top:0});
+}
+
+/* ---------- compounding demo ---------- */
+function drawCompound(){
+  const m=+$('#cMonthly').value,y=+$('#cYears').value,rate=+$('#cRate').value/100,r=rate/12;
+  $('#cMonthlyOut').textContent=fmt$0(m);$('#cYearsOut').textContent=String(y);$('#cRateOut').textContent=(+$('#cRate').value)+'%';
+  $('#cLegMain').textContent='Invested at '+(+$('#cRate').value)+'%';
+  const inv=[],gr=[];
+  for(let k=0;k<=y;k++){const n=k*12;inv.push(m*n);gr.push(r>0?m*(Math.pow(1+r,n)-1)/r:m*n)}
+  const box=$('#cChart');if(box.clientWidth)renderLine($('#cSvg'),gr,inv,{normalize:false,id:'c'});
+  const ie=last(inv),ge=last(gr);
+  $('#cOut').innerHTML='In '+y+(y===1?' year':' years')+' you would put in <b>'+fmt$0(ie)+'</b>. Growing at '+(+$('#cRate').value)+'% a year it would become <b>'+fmt$0(ge)+'</b>, so <b>'+fmt$0(ge-ie)+'</b> of that is growth the money earned by itself.';
+}
+
+/* ---------- quiz ---------- */
+const QUIZ=[
+  {q:'You buy one share of a company. What do you actually own?',o:['A loan the company has to repay','A small slice of the company','A promise that the price will go up','A bond'],a:1,why:'A share is ownership. The company owes you nothing except your slice of whatever it earns.'},
+  {q:'Which of these is the most diversified?',o:['100 shares of one company','Shares in three tech companies','A fund holding 500 companies across every sector','Cash'],a:2,why:'Hundreds of companies in different industries means one disaster barely registers. Cash is safe from stock swings but it doesn’t grow.'},
+  {q:'A stock you own drops 15% in a day on bad news. The best first move is usually to:',o:['Sell immediately before it falls further','Ask whether the news changes the long-term story, and do nothing if it doesn’t','Buy more with borrowed money','Switch everything into whatever rose the most today'],a:1,why:'Panic selling locks in the loss. The useful question is whether the business is actually worse, not whether the price is.'},
+  {q:'Two funds track the same index. One charges 0.05% a year, the other 1%. After 30 years the cheap one will most likely be:',o:['Roughly a fifth to a quarter larger','About the same','Smaller, because cheap means lower quality','Only 1% larger'],a:0,why:'Fees compound just like returns do. One percent a year, every year, for 30 years, is a large slice of the final pot.'},
+  {q:'Dollar-cost averaging means:',o:['Buying only when prices fall','Investing a fixed amount on a regular schedule regardless of price','Working out the average price of your shares','Selling half when a stock doubles'],a:1,why:'Same amount, same day, every month. It removes the impossible job of picking the right moment.'},
+  {q:'Which of these should not go into stocks?',o:['Money you won’t need for ten years','Your emergency fund and next month’s rent','A small amount you can set aside every month','Money inside a tax-free account'],a:1,why:'Stocks can be down 30% exactly when the boiler breaks. Money you need soon stays in cash.'}
+];
+function renderQuiz(){
+  $('#quizBody').innerHTML=QUIZ.map((q,i)=>'<div class="q" data-q="'+i+'"><p>'+(i+1)+'. '+q.q+'</p><div class="opts">'+
+    q.o.map((o,j)=>'<label class="opt"><input type="radio" name="q'+i+'" value="'+j+'"><span>'+o+'</span></label>').join('')+
+    '</div><p class="why" hidden>'+q.why+'</p></div>').join('');
+}
+function checkQuiz(){
+  let score=0,answered=0;
+  QUIZ.forEach((q,i)=>{
+    const wrap=$('.q[data-q="'+i+'"]'),picked=wrap.querySelector('input:checked');
+    $$('.opt',wrap).forEach(o=>o.classList.remove('correct','wrong'));
+    const opts=$$('.opt',wrap);
+    opts[q.a].classList.add('correct');
+    if(picked){answered++;const j=+picked.value;if(j===q.a)score++;else opts[j].classList.add('wrong')}
+    wrap.querySelector('.why').hidden=false;
+  });
+  const el=$('#quizScore');el.hidden=false;
+  el.textContent=answered<QUIZ.length?'You answered '+answered+' of '+QUIZ.length+'. Score so far: '+score+' right.':score+' of '+QUIZ.length+' right.'+(score===QUIZ.length?' Clean sweep.':score>=4?' Solid. Re-read the ones you missed.':' Worth a second pass through the lessons.');
+}
+
+/* ---------- wiring ---------- */
+function bind(){
+  $$('.tab').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+  $('#btnDay').addEventListener('click',()=>advance(1));
+  $('#btnWeek').addEventListener('click',()=>advance(5));
+  $('#btnAuto').addEventListener('click',()=>timer?stopAuto():startAuto());
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAuto()});
+
+  $$('.seg [data-range]').forEach(b=>b.addEventListener('click',()=>{S.range=+b.dataset.range;save();drawMain()}));
+  $('#vPrice').addEventListener('click',()=>{S.view='price';save();renderMarkets();drawMain()});
+  $('#vPort').addEventListener('click',()=>{S.view='portfolio';save();renderMarkets();drawMain()});
+
+  const box=$('#chart');
+  box.addEventListener('pointerdown',e=>{scrubbing=true;scrubAt(e.clientX)});
+  box.addEventListener('pointermove',e=>{if(scrubbing||e.pointerType==='mouse')scrubAt(e.clientX)});
+  ['pointerup','pointercancel','pointerleave'].forEach(ev=>box.addEventListener(ev,scrubEnd));
+
+  $('#marketList').addEventListener('click',e=>{const b=e.target.closest('.row');if(b)select(b.dataset.t)});
+  $('#holdings').addEventListener('click',e=>{
+    const sa=e.target.closest('[data-sellall]');if(sa){const t=sa.dataset.sellall,h=S.hold[t];if(h)sell(t,h.q);return}
+    const b=e.target.closest('.hrow');if(b)select(b.dataset.t);
+  });
+
+  const q=$('#qty');
+  q.addEventListener('input',renderTrade);
+  $$('.chip').forEach(c=>c.addEventListener('click',()=>{
+    const p=price(S.sel),amt=c.dataset.amt==='max'?S.cash:+c.dataset.amt;
+    const n=Math.floor(amt/p*10000)/10000;q.value=String(n);renderTrade();
+    if(n<=0)toast('Not enough cash for that');
+  }));
+  $('#btnBuy').addEventListener('click',()=>buy(S.sel,qty()));
+  $('#btnSell').addEventListener('click',()=>sell(S.sel,qty()));
+
+  let armed=false,armT=null;const rb=$('#btnReset');
+  rb.addEventListener('click',()=>{
+    if(!armed){armed=true;rb.textContent='Tap again to confirm reset';armT=setTimeout(()=>{armed=false;rb.textContent='Reset simulation'},3000);return}
+    clearTimeout(armT);armed=false;rb.textContent='Reset simulation';stopAuto();S=newState();save();renderAll();toast('Fresh start: $10,000');
+  });
+
+  $$('[data-try]').forEach(b=>b.addEventListener('click',()=>{showTab('sim');select(b.dataset.try)}));
+  ['cMonthly','cYears','cRate'].forEach(id=>$('#'+id).addEventListener('input',drawCompound));
+  $('#btnQuiz').addEventListener('click',checkQuiz);
+
+  if(window.ResizeObserver){
+    const ro=new ResizeObserver(()=>{if(!$('#sim').hidden)drawMain();if(!$('#learn').hidden)drawCompound()});
+    ro.observe($('#chart'));ro.observe($('#cChart'));
+  }else window.addEventListener('resize',()=>{drawMain();drawCompound()});
+}
+
+/* ---------- boot ---------- */
+function start(data){
+  S=(data&&data.state&&data.state.px)?data.state:(load()||newState());
+  if(!S.view)S.view='price';if(!S.range&&S.range!==0)S.range=22;if(!BY[S.sel])S.sel='VOO';
+  renderQuiz();bind();renderAll();drawCompound();
+  let h='';try{h=(location.hash||'').replace('#','')}catch(e){}
+  if(h==='learn')showTab('learn');
+}
+try{if(window.claude&&window.claude.hot&&window.claude.hot.snapshot)window.claude.hot.snapshot(()=>({state:S}))}catch(e){}
+if(window.claude&&window.claude.hot&&window.claude.hot.ready)window.claude.hot.ready(start);
+else start((window.claude&&window.claude.hot&&window.claude.hot.data)||{});
+})();
+</script>
+
+</body>
+</html>
